@@ -21,7 +21,7 @@
   "homepage_url": "https://github.com/opws/opws-surveyor-extension",
   "incognito": "split",
   "permissions": [
-    "<all_urls>",
+    "activeTab",
     "pageCapture"
   ]
 }
