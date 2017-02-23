@@ -32,12 +32,18 @@ function getCodeElementTextContent(tabId) {
   return new lastErrorPromise(resolve =>
     chrome.tabs.executeScript({
       code: 'document.getElementsByTagName("code")[0].textContent'
-    }, resolve));
+    }, resolve)).then(results => results[0]);
 }
 
 function getPageAsMHTML(tabId) {
   return new lastErrorPromise(resolve =>
-    chrome.pageCapture.saveAsMHTML({tabId}, resolve));
+    chrome.pageCapture.saveAsMHTML({tabId}, resolve)
+  ).then(mhtmlBlob => new Promise((resolve, reject) => {
+    let reader = new FileReader();
+    reader.addEventListener("loadend", e =>
+      reader.error ? reject(reader.error) : resolve(reader.result));
+    reader.readAsText(mhtmlBlob);
+  }));
 }
 
 function openGistInNewTab(gistId, openerTabId) {
