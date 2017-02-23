@@ -58,7 +58,7 @@ function postPageSpecimen(tabId, description) {
     getPageAsMHTML(tabId), getPageOuterHTML(tabId)
   ]).then(tuple =>
     postAnonymousGist({
-      "specimen.mhtml": tuple[0], "document_outer.html": tuple[1]
+      "specimen.mhtml": tuple[0], "documentElement.html": tuple[1]
     }, description)
   ).then(gistId =>
     openGistInNewTab(gistId, tabId));
