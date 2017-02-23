@@ -12,12 +12,6 @@
     "default_popup": "popup.html"
   },
   "author": "Stuart P. Bentley",
-  "background": {
-    "scripts": [
-      "vendor/gistachio.js",
-      "scripts/eventpage.js"],
-    "persistent": false
-  },
   "homepage_url": "https://github.com/opws/opws-surveyor-extension",
   "incognito": "split",
   "permissions": [
