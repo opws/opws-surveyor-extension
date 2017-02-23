@@ -27,7 +27,8 @@ function expressionInActiveTab(code) {
 }
 
 function getPageOuterHTML(tabId) {
-  return expressionInActiveTab('document.documentElement.outerHTML');
+  return expressionInActiveTab('document.documentElement.outerHTML')
+    .then(html => '<!DOCTYPE html>\n' + html);
 }
 
 function getCodeElementTextContent(tabId) {
