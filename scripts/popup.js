@@ -21,18 +21,18 @@ function postAnonymousGist(files, description) {
     gistachio.postFiles(files, {description, public: false}, resolve));
 }
 
-function getPageOuterHTML(tabId) {
+function expressionInActiveTab(code) {
   return new lastErrorPromise(resolve =>
-    chrome.tabs.executeScript({
-      code: 'document.documentElement.outerHTML'
-    }, resolve));
+    chrome.tabs.executeScript({code}, resolve)).then(results => results[0]);
+}
+
+function getPageOuterHTML(tabId) {
+  return expressionInActiveTab('document.documentElement.outerHTML');
 }
 
 function getCodeElementTextContent(tabId) {
-  return new lastErrorPromise(resolve =>
-    chrome.tabs.executeScript({
-      code: 'document.getElementsByTagName("code")[0].textContent'
-    }, resolve)).then(results => results[0]);
+  return expressionInActiveTab(
+    'document.getElementsByTagName("code")[0].textContent');
 }
 
 function getPageAsMHTML(tabId) {
