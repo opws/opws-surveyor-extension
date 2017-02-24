@@ -21,6 +21,7 @@ let reMailsacRaw = /^https?:\/\/mailsac\.com\/raw\//;
 
 let specimenDescriptionInput = document.getElementById('specimen-description');
 let specimenButton = document.getElementById('specimen-button');
+let specimenForm = document.getElementById('specimen-form');
 
 function updateButtonState() {
   if (reMailsacRaw.test(activeTab.url)) {
@@ -39,7 +40,7 @@ function saveSpecimen() {
   });
 }
 
-specimenButton.addEventListener('click', saveSpecimen);
+specimenForm.addEventListener('submit', saveSpecimen);
 
 function setActiveTabState(tab) {
   if (!activeTab) addActiveTabUpdateListeners();
