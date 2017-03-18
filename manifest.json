@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "OPWS Toolkit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "icons": { "16": "icons/opws-logo-16px.png",
              "48": "icons/opws-logo-48px.png",
             "128": "icons/opws-logo-128px.png" },
